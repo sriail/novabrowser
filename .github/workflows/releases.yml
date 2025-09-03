@@ -16,7 +16,7 @@ env:
 jobs:
   changelog:
     name: Release TAG
-    if: ${{ github.repository_owner == 'radiusproxy' }}
+    if: ${{ github.repository_owner == 'srianil' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
