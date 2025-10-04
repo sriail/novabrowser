@@ -1,0 +1,22 @@
+---
+import { useTabs, Tab } from './Tabs.ts';
+
+const initialTabs: Tab[] = [
+  { id: 'home', title: 'Home', content: 'Welcome to NovaBrowser!' }
+];
+
+const { tabs, activeTab, addTab, closeTab, switchTab } = useTabs(initialTabs);
+---
+
+<div class="tabbar">
+  {tabs.map(tab => (
+    <div class={`tab ${tab.id === activeTab ? 'active' : ''}`} onClick={() => switchTab(tab.id)}>
+      {tab.title}
+      <button onClick={() => closeTab(tab.id)}>×</button>
+    </div>
+  ))}
+  <button onClick={() => addTab({ id: `tab${tabs.length}`, title: `Tab ${tabs.length+1}`, content: '' })}>+</button>
+</div>
+<div class="tab-content">
+  {tabs.find(tab => tab.id === activeTab)?.content}
+</div>
